@@ -1,0 +1,201 @@
+﻿<!doctype html>
+<!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
+<!--[if IE 7]>    <html class="ie7 oldie"> <![endif]-->
+<!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jogada Certa!</title>
+<link href="boilerplate.css" rel="stylesheet" type="text/css">
+<link href="fluid.css" rel="stylesheet" type="text/css">
+<!-- 
+To learn more about the conditional comments around the html tags at the top of the file:
+paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+
+Do the following if you're using your customized build of modernizr (http://www.modernizr.com/):
+* insert the link to your js here
+* remove the link below to the html5shiv
+* add the "no-js" class to the html tags at the top
+* you can also remove the link to respond.min.js if you included the MQ Polyfill in your modernizr build 
+-->
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<link href="bootstrap.min.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<link href="bootstrap.min.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<script src="jquery.js"></script>
+<script type="text/javascript" src="bannerids.js"></script>
+<script src="respond.min.js"></script>
+<script src="jquery.js"></script>
+<script type="text/javascript" src="bannerids.js"></script>
+</head>
+<body>
+	
+<section class="col-md-10">    
+
+    
+            <div class="col-md-6"> 
+                    <h2>Jogada Certa </h2>
+                    </div>
+             
+    
+    <div class="col-md-6 boxer">
+        <div class="">
+            <div  ><!--class="jumbotron"-->
+                    <h1>Mega Sena!</h1>
+                    <p>Façam suas apostas! <br>
+                    Estamos chegando ao fim do ano. É hora de fazer uma "fezinha".<br>
+                    Click no botão e gere os 6 números. A sorte está lançada!</p>
+                    <p onClick="mega()"><a class="btn btn-danger btn-lg"  role="button">Jogar</a></p>
+            </div>
+        <div id="resultSena">
+        </div>
+                </div>
+    </div>
+    <div class="col-md-6 boxer">
+        <div class="">
+            <div ><!--class="jumbotron"-->
+                    
+                    <p>Façam suas apostas! <br>
+                    Estamos chegando ao fim do ano. É hora de fazer uma "fezinha".<br>
+                    Click no botão e gere os 6 números. A sorte está lançada!</p>
+                    <p onClick="quina()"><a class="btn btn-danger btn-lg"  role="button">Jogar</a></p>
+            </div>
+        <div  id="resultQuina">
+        </div>
+                </div>
+    </div>
+    <div class="col-md-6 boxer">
+        <div class="">
+            <div > <!--class="jumbotron"-->
+                    <h1>Quadra!</h1>
+                    <p>Façam suas apostas! <br>
+                    Estamos chegando ao fim do ano. É hora de fazer uma "fezinha".<br>
+                    Click no botão e gere os 6 números. A sorte está lançada!</p>
+                    <p onClick="quadra()"><a class="btn btn-danger btn-lg" role="button">Jogar</a></p>
+            </div>
+        <div id="resultQuadra">
+        </div>
+                </div>
+    </div>
+ </section>
+    <!--<div class="col-md-1">
+        <div class="offer-2">
+        </div>
+    </div>    -->
+
+		<!-- aqui termina -->
+ 
+</body>
+<script>
+$( document ).ready(function() {
+    var offer;
+    offer = getOffers();
+    $( ".offer-1" ).append(offer[0]);
+    $( ".offer-2" ).append(offer[1]);
+});
+
+function mega() {
+	var res = megasena();
+    //$( "#result" ).prepend('<li class="bolas">' + res.join(" ") + '</li>' );
+	$( "#resultSena" ).prepend("<ul class='grupo-bolas'><li class='bolas'>" + res.join("</li><li class='bolas'>") + "</li></ul>");
+}
+
+function quina() {
+	var res = quinasena();
+    //$( "#result" ).prepend('<li class="bolas">' + res.join(" ") + '</li>' );
+	$( "#resultQuina" ).prepend("<ul class='grupo-bolas-quina'><li class='bolas'>" + res.join("</li><li class='bolas'>") + "</li></ul><br>");
+}
+
+function quadra() {
+	var res = quadrasena();
+    //$( "#result" ).prepend('<li class="bolas">' + res.join(" ") + '</li>' );
+	$( "#resultQuadra" ).prepend("<ul class='grupo-bolas-quadra'><li class='bolas'>" + res.join("</li><li class='bolas'>") + "</li></ul><br>");
+}
+
+function numbers(num, first, last) {
+	var result = [];
+    for (var i = num; i >= 1; i--) {
+        var a = Math.floor((Math.random() * last) + first);
+        result.push(a);
+    }
+    var res = result.sort(function(a, b){return a-b});
+    return res; 
+}
+
+
+function checkRepeat (vetor) {
+    var dicionario = {};
+    for (var i = 0; i < vetor.length; i++) {
+        dicionario[vetor[i] + ""] = true;
+    }
+    var novoVetor = [];
+    for (var chave in dicionario) {
+        novoVetor.push(chave);
+    }
+    return novoVetor;
+}
+
+function megasena(){
+	var num = 6;
+	var ini = 1;
+	var fim = 60;
+	var res = checkRepeat(numbers(num, ini, fim));
+	if (res.length != num) {
+		while (res.length !=num){
+			res = checkRepeat(numbers(num, ini, fim));
+		}
+	};
+	return res;
+}
+
+function quinasena(){
+	var num = 5;
+	var ini = 1;
+	var fim = 60;
+	var res = checkRepeat(numbers(num, ini, fim));
+	if (res.length != num) {
+		while (res.length !=num){
+			res = checkRepeat(numbers(num, ini, fim));
+		}
+	};
+	return res;
+}
+
+function quadrasena(){
+	var num = 4;
+	var ini = 1;
+	var fim = 60;
+	var res = checkRepeat(numbers(num, ini, fim));
+	if (res.length != num) {
+		while (res.length !=num){
+			res = checkRepeat(numbers(num, ini, fim));
+		}
+	};
+	return res;
+}
+
+function getOffers(){
+    banner = getBannerIds();
+    var offer = [
+        '<a href="http://v2.afilio.com.br/tracker.php?banid='+banner[0][0]+'&campid=1;'+banner[0][1]+'&siteid=1"><img src="http://v2.afilio.com.br/banner.php?banid='+banner[0][0]+'&campid=1;'+banner[0][1]+'&siteid=1" border="0"></a>',
+        '<a href="http://v2.afilio.com.br/tracker.php?banid='+banner[1][0]+'&campid=1;'+banner[1][1]+'&siteid=1"><img src="http://v2.afilio.com.br/banner.php?banid='+banner[1][0]+'&campid=1;'+banner[1][1]+'&siteid=1" border="0"></a>'
+    ];
+    return [offer[0],offer[1]];
+}
+
+function getBannerIds(){
+    var a = numbers(1, 0, bannerids.length);
+    var b = numbers(1, 0, bannerids.length);
+    var ret;
+    var banner0 = bannerids[a].split(";");
+    var banner1 = bannerids[b].split(";");
+    return [banner0, banner1];
+}
+</script>
+</html>

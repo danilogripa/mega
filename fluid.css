@@ -1,0 +1,364 @@
+@charset "utf-8";
+/* Simple fluid media
+   Note: Fluid media requires that you remove the media's height and width attributes from the HTML
+   http://www.alistapart.com/articles/fluid-images/ 
+*/
+body {
+	background: rgba(0,100,0,.5)!important ;
+	background-image:url(simbolo.svg)!important ;
+	background-attachment:fixed !important;
+	background-repeat:no-repeat !important;
+	background-position: top center !important;
+	background-size:contain !important
+	}
+section { background: rgba(255,255,255,.75) !important; padding:2%  1.55%  2% 0.225% !important; box-shadow: #000000 0 15px 30px 5px !important;}
+
+img, object, embed, video {
+	max-width: 100%;
+}
+
+/* IE 6 does not support max-width so default to width 100% */
+.ie6 img {
+	width:100%;
+}
+
+/*
+	Dreamweaver Fluid Grid Properties
+	----------------------------------
+	dw-num-cols-mobile:		4;
+	dw-num-cols-tablet:		8;
+	dw-num-cols-desktop:	12;
+	dw-gutter-percentage:	25;
+	
+	Inspiration from "Responsive Web Design" by Ethan Marcotte 
+	http://www.alistapart.com/articles/responsive-web-design
+	
+	and Golden Grid System by Joni Korpi
+	http://goldengridsystem.com/
+*/
+
+.fluid {
+	clear: both;
+	margin-left: 0;
+	width: 100%;
+	float: left;
+	display: block;
+}
+
+.fluidList {
+    list-style:none;
+    list-style-image:none;
+    margin:0;
+    padding:0;        
+}
+
+/* Mobile Layout: 480px and below. */
+  
+.gridContainer {
+	margin-left: auto;
+	margin-right: auto;
+	width: 86.45%;
+	padding-left: 2.275%;
+	padding-right: 2.275%;
+	clear: none;
+	float: none;
+}
+#div1 {
+}
+.zeroMargin_mobile {
+    margin-left: 0;
+}
+.hide_mobile {
+    display: none;
+}
+.bolas{
+	background: -webkit-gradient(radial,  70% 30%, 0, 70% 20%, 20, from(white), to(orange));
+	background: -moz-radial-gradient(70% 30%, closest-corner, white, orange);
+	border-radius:30px;
+	width:60px;
+	height:60px;
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-fill-mode: forwards;
+	-webkit-animation-name: rollingBall;
+	animation-duration: 0.6s;
+	animation-delay: 0s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-name: rollingBall;
+	list-style:none;
+	float:left;
+	padding:10px;
+	font-size: 24pt;
+	margin-right:2px;
+	text-align:center;
+	box-shadow:#000 0 5px 8px;
+	}
+	
+	
+@keyframes rollingBall {
+   from {
+   transform: rotate(0deg);
+   opacity:0;
+   }
+
+   to {
+   transform: rotate(-360deg);
+   opacity:1;
+   }
+}
+@-webkit-keyframes rollingBall {
+   from {
+   transform: rotate(0deg);
+   opacity:0;
+   }
+
+   to {
+   transform: rotate(-360deg);
+   opacity:1;
+   }
+}
+
+
+/* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
+
+@media only screen and (min-width: 481px) {
+.col-md-10{width: 100%;margin: 0 auto !important;clear: both;}
+.gridContainer {
+	width: 90.675%;
+	padding-left: 1.1625%;
+	padding-right: 1.1625%;
+	clear: none;
+	float: none;
+	margin-left: auto;
+}
+#div1 {
+}
+.zeroMargin_tablet {
+    margin-left: 0;
+}
+.hide_tablet {
+    display: none;
+}
+.bolas{
+	border-radius:30px;
+	width:30px;
+	height:30px;
+	background-image:linear-gradient(135deg, yellow, orange); 	
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-fill-mode: forwards;
+	-webkit-animation-name: rollingBall;
+	animation-duration: 1.25s;
+	animation-delay: 0s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-name: rollingBall;
+	list-style:none;
+	float:left;
+	padding:5px;
+	font-size: 14pt;
+	margin-right:2px;
+	text-align:center;
+	box-shadow:#000 0 5px 8px;
+	}
+	
+	
+@keyframes rollingBall {
+   from {
+   transform: rotate(0deg);
+   opacity:0;
+   }
+
+   to {
+   transform: rotate(-360deg);
+   opacity:1;
+   }
+}
+@-webkit-keyframes rollingBall {
+   from {
+   transform: rotate(0deg);
+   opacity:0;
+   }
+
+   to {
+   transform: rotate(-360deg);
+   opacity:1;
+   }
+}
+
+}
+
+/* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
+
+@media only screen and (min-width: 768px) {
+
+.gridContainer {
+	width: 88.5%;
+	max-width: 1232px;
+	padding-left: 0.75%;
+	padding-right: 0.75%;
+	margin: auto;
+	clear: none;
+	float: none;
+	margin-left: auto;
+}
+#div1 {
+}
+.zeroMargin_desktop {
+    margin-left: 0;
+}
+.hide_desktop {
+    display: none;
+}
+.bolas{
+	border-radius:30px;
+	width:30px;
+	height:30px;
+	background-image:linear-gradient(135deg, yellow, orange); 	
+	-webkit-animation-duration: 0.6s;
+	-webkit-animation-delay: 0s;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-fill-mode: forwards;
+	-webkit-animation-name: rollingBall;
+	animation-duration: 1.25s;
+	animation-delay: 0s;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-name: rollingBall;
+	list-style:none;
+	float:left;
+	padding:5px;
+	font-size: 14pt;
+	margin-right:2px;
+	text-align:center;
+	box-shadow:#000 0 5px 8px;
+	margin: 0 0 5px 10px;
+	}
+	
+	
+@keyframes rollingBall {
+   from {
+   transform: rotate(0deg);
+   opacity:0;
+   }
+
+   to {
+   transform: rotate(-360deg);
+   opacity:1;
+   }
+}
+@-webkit-keyframes rollingBall {
+   from {
+   transform: rotate(0deg);
+   opacity:0;
+   }
+
+   to {
+   transform: rotate(-360deg);
+   opacity:1;
+   }
+}
+
+}
+.col-md-1{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+/*.col-md-9{
+    margin-right: 10px;
+    margin-left: 10px;
+}*/
+.container{
+    width: 100%;
+	margin:auto;
+}
+h1 { font-size:24pt !im	portant; font-weight:bold}
+h2 { font-size:50pt !important; font-weight:bold; text-shadow: 2px 2px 5px #000; color:#CC0}
+h3 { background-image:url(bolasbkg.png); background-repeat:no-repeat; padding:15px 0 15px 25px
+; word-spacing:20px}
+
+
+.boxer {
+	border-bottom-left-radius:6px;
+	border-top-left-radius:6px;
+	border-bottom-right-radius:6px;
+	border:thin solid #D88A18;
+	display:inline-block;
+	margin: 0 0 10px 10px;
+}
+.boxer:after{
+	border-right: 15px solid white;
+	border-top: 15px solid white;
+	
+	}
+	.grupo-bolas{
+	display: inline-block;
+	margin-bottom: 20px;
+	padding: 0 15px 0 0;
+	/*border-bottom: thin dashed #FFAE00;*/
+	width: 100% !important;
+}
+.grupo-bolas-quina{
+	display: inline-block;
+	margin-bottom: 20px;
+	padding: 0 15px 0 0;
+	/*border-bottom: thin dashed #FFAE00;*/
+	width: 100% !important;
+}
+.grupo-bolas-quadra{
+	display: inline-block;
+	margin-bottom: 20px;
+	padding: 0 15px 0 0;
+	/*border-bottom: thin dashed #FFAE00;*/
+	width: 100% !important;
+}
+@media (min-width: 992px){
+.col-md-10 {
+  width: 27% !important;
+  margin: 0 auto !important;
+  clear: both;}
+}
+@media only screen and (min-width: 481px)
+{
+.col-md-10 {
+	
+  width: 74% !important;
+  margin: 0 auto !important;
+  clear: both;
+}
+}
+@media only screen and (min-width: 767px)
+{
+.col-md-10 {
+	
+  width: 70% !important;
+  margin: 0 auto !important;
+  clear: both;
+}
+.col-md-6{
+	display: inline-block;
+	margin-bottom: 20px;
+	padding: 0 15px 0 0;
+	/*border-bottom: thin dashed #FFAE00;*/
+	width: 100% !important;
+}
+}
+@media only screen and (min-width: 1023px)
+{
+.col-md-10 {
+	
+  width: 530px !important;
+  margin: 0 auto !important;
+  clear: both;
+}
+.col-md-6{
+	display: inline-block;
+	margin-bottom: 20px;
+	padding: 0 15px 0 0;
+	/*border-bottom: thin dashed #FFAE00;*/
+	width: 100% !important;
+}
+}
